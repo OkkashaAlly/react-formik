@@ -1,4 +1,5 @@
 import { useFormik } from "formik";
+import * as Yup from "yup";
 
 // ====================
 // FORM(formik)========
@@ -11,6 +12,12 @@ const initialValues = {
 const onSubmit = values => {
   console.log("Form values: ", values);
 };
+
+const validationSchema = Yup.object({
+  name: Yup.string().required("Required!"),
+  email: Yup.string().email("Invalid email").required("Required!"),
+  channel: Yup.string().required("Required!"),
+});
 
 const validate = values => {
   // errors has to have the same properties as initialValues
@@ -32,10 +39,10 @@ const SimpleForm = () => {
   const formik = useFormik({
     initialValues,
     onSubmit,
-    validate,
+    validationSchema,
   });
 
-  console.log("Form errors", formik.errors);
+  // console.log("field visited", formik.touched);
 
   ////////////////////
   // RETURN /////////
@@ -48,10 +55,11 @@ const SimpleForm = () => {
             className="p-3 border border-black"
             type="text"
             name="name"
+            onBlur={formik.handleBlur}
             onChange={formik.handleChange}
             value={formik.values.name}
           />
-          {formik.errors.name && (
+          {formik.touched.name && formik.errors.name && (
             <span className="text-red-500">{formik.errors.name}</span>
           )}
         </div>
@@ -61,10 +69,11 @@ const SimpleForm = () => {
             className="p-3 border border-black"
             type="email"
             name="email"
+            onBlur={formik.handleBlur}
             onChange={formik.handleChange}
             value={formik.values.email}
           />
-          {formik.errors.email && (
+          {formik.touched.email && formik.errors.email && (
             <span className="text-red-500">{formik.errors.email}</span>
           )}
         </div>
@@ -74,10 +83,11 @@ const SimpleForm = () => {
             className="p-3 border border-black"
             type="text"
             name="channel"
+            onBlur={formik.handleBlur}
             onChange={formik.handleChange}
             value={formik.values.channel}
           />
-          {formik.errors.channel && (
+          {formik.touched.channel && formik.errors.channel && (
             <span className="text-red-500">{formik.errors.channel}</span>
           )}
         </div>
