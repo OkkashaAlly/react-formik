@@ -1,26 +1,170 @@
+/* Fonts */
+@import url("https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@300&display=swap");
+
+/* @tailwind base;
+@tailwind components;
+@tailwind utilities; */
+/* @import './base.css'; */
+
+@import "tailwindcss/base";
+@import "tailwindcss/components";
+@import "tailwindcss/utilities";
+
+@font-face {
+  font-family: "Furore";
+  src: url("/font/Furore.otf") format("opentype");
+}
+
 html,
 body {
-  padding: 0;
+  width: 100%;
+  height: 100%;
   margin: 0;
-  font-family: -apple-system, BlinkMacSystemFont, Segoe UI, Roboto, Oxygen,
-    Ubuntu, Cantarell, Fira Sans, Droid Sans, Helvetica Neue, sans-serif;
+  padding: 0;
+  overflow-x: hidden;
+  scroll-behavior: smooth;
+  background-color: var(--white);
+  /* fonts */
+  font-family: "Inter", sans-serif;
+  -moz-osx-font-smoothing: grayscale;
+  -webkit-font-smoothing: antialiased !important;
+  -moz-font-smoothing: antialiased !important;
+  text-rendering: optimizelegibility !important;
 }
 
-a {
-  color: inherit;
-  text-decoration: none;
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  font-family: "Furore", sans-serif;
 }
 
-* {
-  box-sizing: border-box;
+p {
+  font-family: "IBM Plex Mono", monospace;
+}
+.header__nav {
+  background-color: #213d5a;
+  padding: 2rem 0;
+}
+.header__nav li:hover {
+  color: red;
 }
 
-@media (prefers-color-scheme: dark) {
-  html {
-    color-scheme: dark;
+/* 
+.header__nav li .active {
+  color: red;
+}
+
+@media (max-width: 768px) {
+  .header__nav li {
+    margin: 0 1rem;
   }
-  body {
-    color: white;
-    background: black;
-  }
+} */
+
+@media (max-width: 640px) {
+  /* .header__nav {
+        justify-content: end;
+    }
+  .header__nav ul {
+    display: none;
+  } */
 }
+
+svg {
+  height: 2rem;
+}
+
+footer {
+  background-color: #152030;
+}
+
+.gradient-bg-welcome {
+  background-color: #0b1c2d;
+  background-image: radial-gradient(at 0% 0%, #0b1c2d, transparent 50%),
+    radial-gradient(at 160% 45%, #22b573 0, transparent 50%),
+    radial-gradient(at 100% 0%, #3bb78f 0, transparent 50%);
+}
+
+.gradient-bg-about {
+  background-color: #0b1c2d;
+  /* // background-image: radial-gradient(at 0% 0%, #0b1c2d, transparent 50%),
+  //   radial-gradient(at 10% 30%, rgb(47, 106, 76) 0, transparent 40%), */
+}
+
+.gradient-bg-services {
+  background-color: #0b1c2d;
+  background-image: radial-gradient(at 0% 0%, #0b1c2d, transparent 50%),
+    radial-gradient(at 50% 100%, rgba(59, 183, 143, 0.6) 0, transparent 50%);
+}
+
+.gradient-bg-transactions {
+  background-color: #0b1c2d;
+  background-image: radial-gradient(at 0% 100%, #0b1c2d, transparent 50%),
+    radial-gradient(at 50% 0%, rgba(59, 183, 143, 0.6) 0, transparent 50%);
+}
+
+.gradient-bg-footer {
+  background-color: #0b1c2d;
+  background-image: radial-gradient(
+      at 0% 100%,
+      hsla(253, 16%, 7%, 1) 0,
+      transparent 53%
+    ),
+    radial-gradient(at 50% 150%, rgba(59, 183, 143, 0.6) 0, transparent 50%);
+}
+
+.blue-glassmorphism {
+  background: rgba(29, 29, 53, 0.4);
+  border-radius: 16px;
+  box-shadow: 0 4px 30px rgba(0, 0, 0, 0.2);
+  backdrop-filter: blur(5px);
+  -webkit-backdrop-filter: blur(5px);
+  border: 1px solid rgba(0, 0, 0, 0.3);
+}
+
+/* white glassmorphism */
+/* .white-glassmorphism {
+  background: rgba(255, 255, 255, 0.05);
+  border-radius: 16px;
+  backdrop-filter: blur(5px);
+  -webkit-backdrop-filter: blur(5px);
+  border: 1px solid #2f6a4c;
+} */
+
+.white-glassmorphism2 {
+  background: rgba(255, 255, 255, 0.05);
+  border-radius: 5px;
+  backdrop-filter: blur(5px);
+  -webkit-backdrop-filter: blur(5px);
+  border: 1px solid rgba(47, 106, 76, 1);
+}
+
+.eth-card {
+  background-color: #a099ff;
+  background-image: radial-gradient(
+      at 83% 67%,
+      rgb(152, 231, 156) 0,
+      transparent 58%
+    ),
+    radial-gradient(at 67% 20%, hsla(357, 94%, 71%, 1) 0, transparent 59%),
+    radial-gradient(at 88% 35%, hsla(222, 81%, 65%, 1) 0, transparent 50%),
+    radial-gradient(at 31% 91%, hsla(9, 61%, 61%, 1) 0, transparent 52%),
+    radial-gradient(at 27% 71%, hsla(336, 91%, 65%, 1) 0, transparent 49%),
+    radial-gradient(at 74% 89%, hsla(30, 98%, 65%, 1) 0, transparent 51%),
+    radial-gradient(at 53% 75%, hsla(174, 94%, 68%, 1) 0, transparent 45%);
+}
+
+.text-gradient {
+  background-color: #fff;
+  background-image: radial-gradient(
+      at 4% 36%,
+      hsla(0, 0%, 100%, 1) 0,
+      transparent 53%
+    ),
+    radial-gradient(at 100% 60%, rgb(0, 0, 0) 0, transparent 50%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
