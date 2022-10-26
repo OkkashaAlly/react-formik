@@ -7,15 +7,18 @@ const SimpleForm = () => {
     channel: "",
   };
 
+  const submitHandler = values => {
+    console.log("Form values: ", values);
+  };
+
   const formik = useFormik({
     initialValues: formValues,
+    onSubmit: submitHandler,
   });
-
-  console.log('Form values: ', formik.values);
 
   return (
     <div className="p-6 bg-yellow-200 rounded-md">
-      <form className="flex flex-col gap-3">
+      <form onSubmit={formik.handleSubmit} className="flex flex-col gap-3">
         <div className="flex flex-col">
           <label htmlFor="name">Name:</label>
           <input
