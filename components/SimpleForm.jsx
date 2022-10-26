@@ -1,6 +1,8 @@
-import React from "react";
+import { useFormik } from "formik";
 
 const SimpleForm = () => {
+  const formik = useFormik({})
+  
   return (
     <div className="p-6 bg-yellow-200 rounded-md">
       <form className="flex flex-col gap-3">
