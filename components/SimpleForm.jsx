@@ -1,4 +1,4 @@
-import { Formik, Form } from "formik";
+import { Formik, Form, Field } from "formik";
 import * as Yup from "yup";
 
 // ====================
@@ -37,23 +37,17 @@ const SimpleForm = () => {
       <Form className="flex flex-col gap-3">
         <div className="flex flex-col">
           <label htmlFor="name">Name:</label>
-          <input
-            className="p-3 border border-black"
-            type="text"
-            name="name"
-            {...formik.getFieldProps("name")}
-          />
+          <Field className="p-3 border border-black" type="text" name="name" />
           {formik.touched.name && formik.errors.name && (
             <span className="text-red-500">{formik.errors.name}</span>
           )}
         </div>
         <div className="flex flex-col">
           <label htmlFor="email">Email:</label>
-          <input
+          <Field
             className="p-3 border border-black"
             type="email"
             name="email"
-            {...formik.getFieldProps("email")}
           />
           {formik.touched.email && formik.errors.email && (
             <span className="text-red-500">{formik.errors.email}</span>
@@ -61,11 +55,10 @@ const SimpleForm = () => {
         </div>
         <div className="flex flex-col">
           <label htmlFor="channel">Channel:</label>
-          <input
+          <Field
             className="p-3 border border-black"
             type="text"
             name="channel"
-            {...formik.getFieldProps("channel")}
           />
           {formik.touched.channel && formik.errors.channel && (
             <span className="text-red-500">{formik.errors.channel}</span>
