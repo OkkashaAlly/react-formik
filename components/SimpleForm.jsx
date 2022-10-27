@@ -1,4 +1,4 @@
-import { Formik, Form, Field } from "formik";
+import { Formik, Form, Field, ErrorMessage } from "formik";
 import * as Yup from "yup";
 
 // ====================
@@ -32,44 +32,43 @@ const SimpleForm = () => {
       initialValues={initialValues}
       validationSchema={validationSchema}
       onSubmit={onSubmit}
-      className="p-6 bg-yellow-200 rounded-md"
     >
-      <Form className="flex flex-col gap-3">
-        <div className="flex flex-col">
-          <label htmlFor="name">Name:</label>
-          <Field className="p-3 border border-black" type="text" name="name" />
-          {formik.touched.name && formik.errors.name && (
-            <span className="text-red-500">{formik.errors.name}</span>
-          )}
-        </div>
-        <div className="flex flex-col">
-          <label htmlFor="email">Email:</label>
-          <Field
-            className="p-3 border border-black"
-            type="email"
-            name="email"
-          />
-          {formik.touched.email && formik.errors.email && (
-            <span className="text-red-500">{formik.errors.email}</span>
-          )}
-        </div>
-        <div className="flex flex-col">
-          <label htmlFor="channel">Channel:</label>
-          <Field
-            className="p-3 border border-black"
-            type="text"
-            name="channel"
-          />
-          {formik.touched.channel && formik.errors.channel && (
-            <span className="text-red-500">{formik.errors.channel}</span>
-          )}
-        </div>
-        <div className="">
-          <button className="p-6 bg-blue-500 " type="submit">
-            Submit
-          </button>
-        </div>
-      </Form>
+      <div className="p-6 bg-yellow-200 rounded-md">
+        <Form className="flex flex-col gap-3">
+          <div className="flex flex-col">
+            <label htmlFor="name">Name:</label>
+            <Field
+              className="p-3 border border-black   "
+              type="text"
+              name="name"
+            />
+            <ErrorMessage name="name" />
+          </div>
+          <div className="flex flex-col">
+            <label htmlFor="email">Email:</label>
+            <Field
+              className="p-3 border border-black"
+              type="email"
+              name="email"
+            />
+            <ErrorMessage name="email" />
+          </div>
+          <div className="flex flex-col">
+            <label htmlFor="channel">Channel:</label>
+            <Field
+              className="p-3 border border-black"
+              type="text"
+              name="channel"
+            />
+            <ErrorMessage name="channel" />
+          </div>
+          <div className="">
+            <button className="p-6 bg-blue-500 " type="submit">
+              Submit
+            </button>
+          </div>
+        </Form>
+      </div>
     </Formik>
   );
 };
