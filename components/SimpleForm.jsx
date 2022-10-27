@@ -4,9 +4,11 @@ import * as Yup from "yup";
 // ====================
 // FORM(formik)========
 const initialValues = {
-  name: "Okkasha",
+  name: "",
   email: "",
   channel: "",
+  comments: "",
+  address: "",
 };
 
 const onSubmit = values => {
@@ -17,14 +19,13 @@ const validationSchema = Yup.object({
   name: Yup.string().required("Required!"),
   email: Yup.string().email("Invalid email").required("Required!"),
   channel: Yup.string().required("Required!"),
+  channel: Yup.string(),
 });
 
 // ========================
 // SIMPLE FORM COMPONENT //
 // ========================
 const SimpleForm = () => {
-  // console.log("field visited", formik.touched);
-
   ////////////////////
   // RETURN /////////
   return (
@@ -41,6 +42,7 @@ const SimpleForm = () => {
               className="p-3 border border-black   "
               type="text"
               name="name"
+              placeholder="Enter your full name"
             />
             <ErrorMessage name="name" />
           </div>
@@ -62,6 +64,30 @@ const SimpleForm = () => {
             />
             <ErrorMessage name="channel" />
           </div>
+
+          <div className="flex flex-col">
+            <label htmlFor="comments">Comments:</label>
+            <Field
+              className="p-3 border border-black"
+              as="textarea"
+              name="comments"
+            />
+            <ErrorMessage name="comments" />
+          </div>
+
+          <div className="flex flex-col">
+            <label htmlFor="address">Address:</label>
+            <Field name="address">
+              {props => {
+                console.log(props);
+                return (
+                  <input type="text" className="p-3 border border-black" />
+                );
+              }}
+            </Field>
+            <ErrorMessage name="address" />
+          </div>
+
           <div className="">
             <button className="p-6 bg-blue-500 " type="submit">
               Submit
