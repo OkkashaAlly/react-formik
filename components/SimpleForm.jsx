@@ -9,6 +9,10 @@ const initialValues = {
   channel: "",
   comments: "",
   address: "",
+  socials: {
+    twitter: "",
+    facebook: "",
+  },
 };
 
 const onSubmit = values => {
@@ -19,7 +23,6 @@ const validationSchema = Yup.object({
   name: Yup.string().required("Required!"),
   email: Yup.string().email("Invalid email").required("Required!"),
   channel: Yup.string().required("Required!"),
-  channel: Yup.string(),
 });
 
 // ========================
@@ -86,6 +89,26 @@ const SimpleForm = () => {
               }}
             </Field>
             <ErrorMessage name="address" />
+          </div>
+
+          <div className="flex flex-col">
+            <label htmlFor="facebook">Facebook:</label>
+            <Field
+              className="p-3 border border-black"
+              type="text"
+              name="socials.facebook"
+            />
+            <ErrorMessage name="facebook" component={TextError} />
+          </div>
+
+          <div className="flex flex-col">
+            <label htmlFor="twitter">twitter:</label>
+            <Field
+              className="p-3 border border-black"
+              type="text"
+              name="socials.twitter"
+            />
+            <ErrorMessage name="twitter" component={TextError} />
           </div>
 
           <div className="">
