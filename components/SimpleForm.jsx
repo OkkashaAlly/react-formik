@@ -1,4 +1,4 @@
-import { Formik } from "formik";
+import { Formik, Form } from "formik";
 import * as Yup from "yup";
 
 // ====================
@@ -34,7 +34,7 @@ const SimpleForm = () => {
       onSubmit={onSubmit}
       className="p-6 bg-yellow-200 rounded-md"
     >
-      <form onSubmit={formik.handleSubmit} className="flex flex-col gap-3">
+      <Form className="flex flex-col gap-3">
         <div className="flex flex-col">
           <label htmlFor="name">Name:</label>
           <input
@@ -76,7 +76,7 @@ const SimpleForm = () => {
             Submit
           </button>
         </div>
-      </form>
+      </Form>
     </Formik>
   );
 };
