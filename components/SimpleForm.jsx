@@ -1,4 +1,4 @@
-import { useFormik } from "formik";
+import { Formik } from "formik";
 import * as Yup from "yup";
 
 // ====================
@@ -19,35 +19,21 @@ const validationSchema = Yup.object({
   channel: Yup.string().required("Required!"),
 });
 
-const validate = values => {
-  // errors has to have the same properties as initialValues
-  let errors = {};
-
-  // check your conditions
-  if (!values.name) errors.name = "Required";
-  if (!values.email) errors.email = "Required";
-  if (!values.channel) errors.channel = "Required";
-
-  return errors;
-};
-
 // ========================
 // SIMPLE FORM COMPONENT //
 // ========================
 const SimpleForm = () => {
-  // Formik
-  const formik = useFormik({
-    initialValues,
-    onSubmit,
-    validationSchema,
-  });
-
   // console.log("field visited", formik.touched);
 
   ////////////////////
   // RETURN /////////
   return (
-    <div className="p-6 bg-yellow-200 rounded-md">
+    <Formik
+      initialValues={initialValues}
+      validationSchema={validationSchema}
+      onSubmit={onSubmit}
+      className="p-6 bg-yellow-200 rounded-md"
+    >
       <form onSubmit={formik.handleSubmit} className="flex flex-col gap-3">
         <div className="flex flex-col">
           <label htmlFor="name">Name:</label>
@@ -55,7 +41,7 @@ const SimpleForm = () => {
             className="p-3 border border-black"
             type="text"
             name="name"
-            {...formik.getFieldProps('name')}
+            {...formik.getFieldProps("name")}
           />
           {formik.touched.name && formik.errors.name && (
             <span className="text-red-500">{formik.errors.name}</span>
@@ -67,8 +53,7 @@ const SimpleForm = () => {
             className="p-3 border border-black"
             type="email"
             name="email"
-            {...formik.getFieldProps('email')}
-
+            {...formik.getFieldProps("email")}
           />
           {formik.touched.email && formik.errors.email && (
             <span className="text-red-500">{formik.errors.email}</span>
@@ -80,8 +65,7 @@ const SimpleForm = () => {
             className="p-3 border border-black"
             type="text"
             name="channel"
-            {...formik.getFieldProps('channel')}
-
+            {...formik.getFieldProps("channel")}
           />
           {formik.touched.channel && formik.errors.channel && (
             <span className="text-red-500">{formik.errors.channel}</span>
@@ -93,7 +77,7 @@ const SimpleForm = () => {
           </button>
         </div>
       </form>
-    </div>
+    </Formik>
   );
 };
 
