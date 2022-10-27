@@ -55,9 +55,7 @@ const SimpleForm = () => {
             className="p-3 border border-black"
             type="text"
             name="name"
-            onBlur={formik.handleBlur}
-            onChange={formik.handleChange}
-            value={formik.values.name}
+            {...formik.getFieldProps('name')}
           />
           {formik.touched.name && formik.errors.name && (
             <span className="text-red-500">{formik.errors.name}</span>
@@ -69,9 +67,8 @@ const SimpleForm = () => {
             className="p-3 border border-black"
             type="email"
             name="email"
-            onBlur={formik.handleBlur}
-            onChange={formik.handleChange}
-            value={formik.values.email}
+            {...formik.getFieldProps('email')}
+
           />
           {formik.touched.email && formik.errors.email && (
             <span className="text-red-500">{formik.errors.email}</span>
@@ -83,9 +80,8 @@ const SimpleForm = () => {
             className="p-3 border border-black"
             type="text"
             name="channel"
-            onBlur={formik.handleBlur}
-            onChange={formik.handleChange}
-            value={formik.values.channel}
+            {...formik.getFieldProps('channel')}
+
           />
           {formik.touched.channel && formik.errors.channel && (
             <span className="text-red-500">{formik.errors.channel}</span>
