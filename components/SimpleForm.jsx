@@ -13,6 +13,7 @@ const initialValues = {
     twitter: "",
     facebook: "",
   },
+  phoneNumbers: ["", ""],
 };
 
 const onSubmit = values => {
@@ -37,7 +38,7 @@ const SimpleForm = () => {
       validationSchema={validationSchema}
       onSubmit={onSubmit}
     >
-      <div className="p-6 bg-yellow-200 rounded-md">
+      <div className="p-6 bg-yellow-200 rounded-md w-7/12">
         <Form className="flex flex-col gap-3">
           <div className="flex flex-col">
             <label htmlFor="name">Name:</label>
@@ -109,6 +110,26 @@ const SimpleForm = () => {
               name="socials.twitter"
             />
             <ErrorMessage name="twitter" component={TextError} />
+          </div>
+
+          <div className="flex flex-col">
+            <label htmlFor="phoneNumbers[0]">Phone no. 1</label>
+            <Field
+              className="p-3 border border-black"
+              type="text"
+              name="phoneNumbers[0]"
+            />
+            <ErrorMessage name="phoneNumbers[0]" component={TextError} />
+          </div>
+
+          <div className="flex flex-col">
+            <label htmlFor="phoneNumbers[1]">Phone no. 2</label>
+            <Field
+              className="p-3 border border-black"
+              type="text"
+              name="phoneNumbers[1]"
+            />
+            <ErrorMessage name="phoneNumbers[1]" component={TextError} />
           </div>
 
           <div className="">
