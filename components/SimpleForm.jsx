@@ -1,4 +1,4 @@
-import { Formik, Form, Field, ErrorMessage } from "formik";
+import { Formik, Form, Field, ErrorMessage, FieldArray } from "formik";
 import * as Yup from "yup";
 
 // ====================
@@ -14,6 +14,7 @@ const initialValues = {
     facebook: "",
   },
   phoneNumbers: ["", ""],
+  phNumbers: [""],
 };
 
 const onSubmit = values => {
@@ -130,6 +131,52 @@ const SimpleForm = () => {
               name="phoneNumbers[1]"
             />
             <ErrorMessage name="phoneNumbers[1]" component={TextError} />
+          </div>
+
+          <div className="flex flex-col">
+            <label htmlFor="phNumbers">Enter phone numbers</label>
+            <FieldArray name="phNumbers">
+              {({ push, remove, form }) => {
+                const { phNumbers } = form.values;
+
+                return (
+                  <div className="flex flex-col gap-2">
+                    {phNumbers.map((_, i) => {
+                      let isDisabled = i > 0;
+
+                      return (
+                        <div key={i} className="flex w-full items-center gap-3">
+                          <Field
+                            type="text"
+                            name={`phNumbers[${i}]`}
+                            className="p-3 border border-black flex-1"
+                          />
+                          <div className="h-full flex gap-1">
+                            <button
+                              type="button"
+                              onClick={_ => {
+                                remove(i);
+                              }}
+                              disabled={!isDisabled}
+                              className="p-3 border border-black bg-slate-200"
+                            >
+                              -
+                            </button>
+                            <button
+                              type="button"
+                              onClick={_ => push("")}
+                              className="p-3 border border-black bg-slate-200"
+                            >
+                              +
+                            </button>
+                          </div>
+                        </div>
+                      );
+                    })}
+                  </div>
+                );
+              }}
+            </FieldArray>
           </div>
 
           <div className="">
