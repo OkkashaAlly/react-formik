@@ -44,7 +44,7 @@ const SimpleForm = () => {
               name="name"
               placeholder="Enter your full name"
             />
-            <ErrorMessage name="name" />
+            <ErrorMessage name="name" component={TextError} />
           </div>
           <div className="flex flex-col">
             <label htmlFor="email">Email:</label>
@@ -53,7 +53,7 @@ const SimpleForm = () => {
               type="email"
               name="email"
             />
-            <ErrorMessage name="email" />
+            <ErrorMessage name="email" component={TextError} />
           </div>
           <div className="flex flex-col">
             <label htmlFor="channel">Channel:</label>
@@ -62,7 +62,7 @@ const SimpleForm = () => {
               type="text"
               name="channel"
             />
-            <ErrorMessage name="channel" />
+            <ErrorMessage name="channel" component={TextError} />
           </div>
 
           <div className="flex flex-col">
@@ -79,7 +79,7 @@ const SimpleForm = () => {
             <label htmlFor="address">Address:</label>
             <Field name="address">
               {props => {
-                console.log(props);
+                // console.log(props);
                 return (
                   <input type="text" className="p-3 border border-black" />
                 );
@@ -98,5 +98,11 @@ const SimpleForm = () => {
     </Formik>
   );
 };
+
+// ===================
+// EXTENDED COMPONENTS
+const TextError = ({ children }) => (
+  <span className="text-red-500">{children}</span>
+);
 
 export default SimpleForm;
