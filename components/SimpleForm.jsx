@@ -1,3 +1,4 @@
+import { useState } from "react";
 import { Formik, Form, Field, ErrorMessage, FieldArray } from "formik";
 import * as Yup from "yup";
 
@@ -17,10 +18,22 @@ const initialValues = {
   phNumbers: [""],
 };
 
-const onSubmit = (values, submitProps) => {
-  console.log("Form values: ", values);
-  console.log("submit props: ", submitProps);
+const savedAPIValues = {
+  name: "Okkasha",
+  email: "okakasha@gmail.com",
+  channel: "OkkashaAlly",
+  comments: "All computer studies in swahili",
+  address: "Dar Es Salaam, TZ",
+  socials: {
+    twitter: "tw",
+    facebook: "fb",
+  },
+  phoneNumbers: ["123", "456"],
+  phNumbers: [""],
+};
 
+const onSubmit = (values, submitProps) => {
+  console.log(values);
   submitProps.setSubmitting(false);
 };
 
@@ -41,20 +54,21 @@ const validateComments = value => {
 // SIMPLE FORM COMPONENT //
 // ========================
 const SimpleForm = () => {
+  const [savedData, setSavedData] = useState(null);
+
   ////////////////////
   // RETURN /////////
   return (
     <Formik
-      initialValues={initialValues}
+      initialValues={savedData || initialValues}
       validationSchema={validationSchema}
       onSubmit={onSubmit}
       validateOnChange={false} // stops validation on each input change
       // validateOnBlur={false}  // stops validation on each element from focus
       // validateOnMount // auto run validation on component load/mount
+      enableReinitialize
     >
       {formik => {
-        console.log("Formik properties", formik);
-
         return (
           <div className="p-6 bg-yellow-200 rounded-md w-7/12">
             <Form className="flex flex-col gap-3">
@@ -102,9 +116,8 @@ const SimpleForm = () => {
                 <label htmlFor="address">Address:</label>
                 <Field name="address">
                   {({ form }) => {
-                    // console.log(form.errors);
                     return (
-                      <input type="text" className="p-3 border border-black" />
+                      <input type="text" name="address" className="p-3 border border-black" />
                     );
                   }}
                 </Field>
@@ -201,6 +214,15 @@ const SimpleForm = () => {
               </div>
 
               <div className="">
+                <button
+                  onClick={_ => {
+                    setSavedData(savedAPIValues);
+                  }}
+                  className="p-6 bg-blue-500 "
+                  type="button"
+                >
+                  load saved
+                </button>
                 {/* <button disabled={!formik.isValid} className="p-6 bg-blue-500 " type="submit"> */}
                 {/* <button disabled={!(formik.dirty && formik.isValid)}> */}
                 <button
