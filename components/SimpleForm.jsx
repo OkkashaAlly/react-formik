@@ -17,8 +17,11 @@ const initialValues = {
   phNumbers: [""],
 };
 
-const onSubmit = values => {
+const onSubmit = (values, submitProps) => {
   console.log("Form values: ", values);
+  console.log("submit props: ", submitProps);
+
+  submitProps.setSubmitting(false);
 };
 
 const validationSchema = Yup.object({
@@ -201,7 +204,7 @@ const SimpleForm = () => {
                 {/* <button disabled={!formik.isValid} className="p-6 bg-blue-500 " type="submit"> */}
                 {/* <button disabled={!(formik.dirty && formik.isValid)}> */}
                 <button
-                  disabled={!formik.isValid}
+                  disabled={formik.isSubmitting || !formik.isValid}
                   className="p-6 bg-blue-500 "
                   type="submit"
                 >
