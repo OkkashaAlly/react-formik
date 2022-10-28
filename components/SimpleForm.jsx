@@ -27,6 +27,13 @@ const validationSchema = Yup.object({
   channel: Yup.string().required("Required!"),
 });
 
+const validateComments = value => {
+  let error;
+
+  if (!value) error = "Required";
+  return error;
+};
+
 // ========================
 // SIMPLE FORM COMPONENT //
 // ========================
@@ -78,15 +85,16 @@ const SimpleForm = () => {
               className="p-3 border border-black"
               as="textarea"
               name="comments"
+              validate={validateComments}
             />
-            <ErrorMessage name="comments" />
+            <ErrorMessage name="comments" component={TextError} />
           </div>
 
           <div className="flex flex-col">
             <label htmlFor="address">Address:</label>
             <Field name="address">
               {({ form }) => {
-                console.log(form.errors);
+                // console.log(form.errors);
                 return (
                   <input type="text" className="p-3 border border-black" />
                 );
