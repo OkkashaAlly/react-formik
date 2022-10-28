@@ -33,8 +33,9 @@ const savedAPIValues = {
 };
 
 const onSubmit = (values, submitProps) => {
-  console.log(values);
+  console.log(submitProps);
   submitProps.setSubmitting(false);
+  submitProps.resetForm();
 };
 
 const validationSchema = Yup.object({
@@ -117,7 +118,11 @@ const SimpleForm = () => {
                 <Field name="address">
                   {({ form }) => {
                     return (
-                      <input type="text" name="address" className="p-3 border border-black" />
+                      <input
+                        type="text"
+                        name="address"
+                        className="p-3 border border-black"
+                      />
                     );
                   }}
                 </Field>
@@ -213,7 +218,7 @@ const SimpleForm = () => {
                 </FieldArray>
               </div>
 
-              <div className="">
+              <div className="flex gap-2">
                 <button
                   onClick={_ => {
                     setSavedData(savedAPIValues);
@@ -222,6 +227,9 @@ const SimpleForm = () => {
                   type="button"
                 >
                   load saved
+                </button>{" "}
+                <button className="p-6 bg-blue-500 " type="reset">
+                  reset
                 </button>
                 {/* <button disabled={!formik.isValid} className="p-6 bg-blue-500 " type="submit"> */}
                 {/* <button disabled={!(formik.dirty && formik.isValid)}> */}
