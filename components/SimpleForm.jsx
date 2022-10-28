@@ -38,6 +38,8 @@ const SimpleForm = () => {
       initialValues={initialValues}
       validationSchema={validationSchema}
       onSubmit={onSubmit}
+      validateOnChange={false} // stops validation on each input change
+      // validateOnBlur={false}  // stops validation on each element from focus
     >
       <div className="p-6 bg-yellow-200 rounded-md w-7/12">
         <Form className="flex flex-col gap-3">
@@ -83,8 +85,8 @@ const SimpleForm = () => {
           <div className="flex flex-col">
             <label htmlFor="address">Address:</label>
             <Field name="address">
-              {props => {
-                // console.log(props);
+              {({ form }) => {
+                console.log(form.errors);
                 return (
                   <input type="text" className="p-3 border border-black" />
                 );
