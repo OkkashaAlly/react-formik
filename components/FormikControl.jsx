@@ -1,4 +1,5 @@
 import Input from "./shared/Input";
+import Textarea from "./shared/Textarea";
 
 // ================================
 // FORMIK CONTROL COMPONENT =======
@@ -9,7 +10,8 @@ const FormikControl = ({ control, ...rest }) => {
       return <Input {...rest} />;
 
     case "textarea":
-      break;
+      return <Textarea {...rest} />;
+      
     case "radio":
       break;
     case "select":
