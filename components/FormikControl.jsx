@@ -1,10 +1,13 @@
+import Input from "./shared/Input";
+
 // ================================
 // FORMIK CONTROL COMPONENT =======
 // ================================
-const FormikControl = ({ control }) => {
+const FormikControl = ({ control, ...rest }) => {
   switch (control) {
     case "input":
-      break;
+      return <Input {...rest} />;
+
     case "textarea":
       break;
     case "radio":
