@@ -1,6 +1,7 @@
 import Input from "./shared/Input";
 import Textarea from "./shared/Textarea";
 import Select from "./shared/Select";
+import RadioButtons from "./shared/RadioButtons";
 
 // ================================
 // FORMIK CONTROL COMPONENT =======
@@ -17,7 +18,8 @@ const FormikControl = ({ control, ...rest }) => {
       return <Select {...rest} />;
 
     case "radio":
-      break;
+      return <RadioButtons {...rest} />;
+      
     case "checkbox":
       break;
     case "date":
