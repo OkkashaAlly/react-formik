@@ -1,7 +1,7 @@
 import { Field, ErrorMessage } from "formik";
 import TextError from "./TextError";
 
-const Input = ({ label, type, name, placeholder }) => {
+const Textarea = ({ label, name, placeholder }) => {
   return (
     <div className="flex flex-col">
       <label htmlFor={name} className={"capitalize"}>
@@ -10,7 +10,6 @@ const Input = ({ label, type, name, placeholder }) => {
       <Field
         as="textarea"
         className="p-3 border border-black"
-        type={type}
         name={name}
         placeholder={placeholder}
       />
@@ -19,4 +18,4 @@ const Input = ({ label, type, name, placeholder }) => {
   );
 };
 
-export default Input;
+export default Textarea;
