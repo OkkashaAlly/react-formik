@@ -74,6 +74,7 @@ const FormikContainer = () => {
     console.log("Form values: ", values);
     // For formatting the date value
     // console.log("Form values: ", JSON.parse(JSON.stringify(values)));
+    // OR use Date Parser 
   };
   /////////////////
   // RETURN =======
