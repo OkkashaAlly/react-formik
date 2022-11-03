@@ -1,11 +1,11 @@
 import { Formik, Form } from "formik";
 import * as Yup from "yup";
-import FormikControl from "./FormikControl";
+import {FormControl} from "./";
 
 // ================================
 // FORMIK CONTAINER COMPONENT =====
 // ================================
-const FormikContainer = () => {
+const RegistrationForm = () => {
   const selectOptions = [
     {
       key: "Select an option",
@@ -87,7 +87,7 @@ const FormikContainer = () => {
       {formik => (
         <Form className="p-4 bg-gray-200 rounded-md">
           {/* Input  */}
-          <FormikControl
+          <FormControl
             control={"input"}
             label={"Email"}
             type={"email"}
@@ -96,14 +96,14 @@ const FormikContainer = () => {
           />
 
           {/* Textarea  */}
-          <FormikControl
+          <FormControl
             control={"textarea"}
             label={"Description"}
             name={"textarea"}
           />
 
           {/* Select  */}
-          <FormikControl
+          <FormControl
             control={"select"}
             label={"Select topic"}
             name={"select"}
@@ -111,7 +111,7 @@ const FormikContainer = () => {
           />
 
           {/* Radio  */}
-          <FormikControl
+          <FormControl
             control={"radio"}
             label={"Radio topic"}
             name={"radio"}
@@ -119,7 +119,7 @@ const FormikContainer = () => {
           />
 
           {/* checkbox  */}
-          <FormikControl
+          <FormControl
             control={"checkbox"}
             label={"checkbox ii topic"}
             name={"checkbox"}
@@ -127,7 +127,7 @@ const FormikContainer = () => {
           />
 
           {/* date  */}
-          <FormikControl control={"date"} label={"Pick a date"} name={"date"} />
+          <FormControl control={"date"} label={"Pick a date"} name={"date"} />
 
           <button className="py-2 px-3 bg-green-500 mt-3" type="submit">
             Submit
@@ -139,4 +139,4 @@ const FormikContainer = () => {
 };
 
 // EXPORT ====================
-export default FormikContainer;
+export default RegistrationForm;

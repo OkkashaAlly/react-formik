@@ -1,14 +1,16 @@
-import Input from "./shared/Input";
-import Textarea from "./shared/Textarea";
-import Select from "./shared/Select";
-import RadioButtons from "./shared/RadioButtons";
-import CheckboxButtons from "./shared/CheckboxButtons";
-import DatePicker from "./shared/DatePicker";
+import {
+  Input,
+  Textarea,
+  Select,
+  RadioButtons,
+  CheckboxButtons,
+  DatePicker,
+} from "./";
 
 // ================================
 // FORMIK CONTROL COMPONENT =======
 // ================================
-const FormikControl = ({ control, ...rest }) => {
+const FormControl = ({ control, ...rest }) => {
   switch (control) {
     case "input":
       return <Input {...rest} />;
@@ -35,4 +37,4 @@ const FormikControl = ({ control, ...rest }) => {
 };
 
 // EXPORT ====================
-export default FormikControl;
+export default FormControl;
