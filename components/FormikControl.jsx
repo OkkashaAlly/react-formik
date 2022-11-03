@@ -3,6 +3,7 @@ import Textarea from "./shared/Textarea";
 import Select from "./shared/Select";
 import RadioButtons from "./shared/RadioButtons";
 import CheckboxButtons from "./shared/CheckboxButtons";
+import DatePicker from "./shared/DatePicker";
 
 // ================================
 // FORMIK CONTROL COMPONENT =======
@@ -25,6 +26,7 @@ const FormikControl = ({ control, ...rest }) => {
       return <CheckboxButtons {...rest} />;
       break;
     case "date":
+      return <DatePicker {...rest} />;
       break;
 
     default:

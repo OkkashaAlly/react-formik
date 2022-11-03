@@ -16,7 +16,7 @@ const CheckboxButtons = ({ label, name, options, ...rest }) => {
                 type={"checkbox"}
                 value={opt.value}
                 id={opt.value}
-                checked={field.value.includes(opt.value)}
+                checked={field.value?.includes(opt.value)}
               />
               <label htmlFor={opt.value}>{opt.key}</label>
             </span>
