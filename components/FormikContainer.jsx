@@ -70,8 +70,11 @@ const FormikContainer = () => {
     checkbox: Yup.array().of(Yup.string()).required("Required").nullable(),
     date: Yup.date().required("Required").nullable(),
   });
-  const handleSubmit = values => console.log("Form values: ", values);
-
+  const handleSubmit = values => {
+    console.log("Form values: ", values);
+    // For formatting the date value
+    // console.log("Form values: ", JSON.parse(JSON.stringify(values)));
+  };
   /////////////////
   // RETURN =======
   return (
